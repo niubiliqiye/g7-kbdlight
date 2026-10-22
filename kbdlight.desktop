@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=键盘灯开关
+Comment=打开或关闭 G7 键盘背光
+Exec=/usr/bin/python3 @APP_PATH@
+Icon=input-keyboard
+Terminal=false
+Categories=Utility;
+StartupNotify=true
+StartupWMClass=cc.renovia.kbdlight

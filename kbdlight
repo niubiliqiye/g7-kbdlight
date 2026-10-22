@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+BIN=/usr/local/libexec/kbdlight/alienfx_cli
+case "${1:-}" in
+  on)  RGB="255 255 255"; STATE=on ;;
+  off) RGB="0 0 0";       STATE=off ;;
+  *) echo "usage: kbdlight on|off" >&2; exit 2 ;;
+esac
+for i in 0 1 2 3 4 5 6 7; do
+  HOME=/root "$BIN" setone 0 "$i" $RGB >/dev/null 2>&1 || exit 1
+done
+printf '%s\n' "$STATE" > /run/kbdlight.state
+chmod 0644 /run/kbdlight.state
